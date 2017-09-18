@@ -4,6 +4,7 @@
 Features
 --------
 * Send keyspace in QUERY, PREPARE, and BATCH messages (PYTHON-678)
+* Include hash of result set metadata in prepared stmt id (PYTHON-808)
 
 Bug Fixes
 ---------
