@@ -220,3 +220,6 @@ class BoundStatementTestV4(BoundStatementTestV1):
         old_values = self.bound.values
         self.bound.bind((0, 0, 0, UNSET_VALUE))
         self.assertEqual(self.bound.values[-1], UNSET_VALUE)
+
+class BoundStatementTestV5(BoundStatementTestV4):
+    protocol_version = 5
