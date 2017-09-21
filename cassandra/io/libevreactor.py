@@ -126,8 +126,11 @@ class LibevLoop(object):
                     watcher.stop()
 
         self.notify()  # wake the timer watcher
-        log.debug("Waiting for event loop thread to join...")
-        self._thread.join(timeout=1.0)
+        # PYTHON-752 Thread might have just been created and not started
+        try:
+            self._thread.join(timeout=1.0)
+        except RuntimeError:
+            pass
         if self._thread.is_alive():
             log.warning(
                 "Event loop thread could not be joined, so shutdown may not be clean. "
